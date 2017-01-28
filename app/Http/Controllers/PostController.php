@@ -10,6 +10,7 @@ use App\Post;
 use App\Category;
 use App\Tag;
 use Session;
+use DB;
 
 class PostController extends Controller
 {
@@ -25,7 +26,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
+        // $posts = Post::all()->paginate(10);
+        $posts = Post::orderBy('id', 'desc')->paginate(10);
         $tags = Tag::all();
         return view('posts.index')->withPosts($posts)->withTags($tags);
     }

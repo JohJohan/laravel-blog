@@ -4,6 +4,16 @@
 
 @section('content')
 
+    <div class="container">
+        <nav class="navbar navbar-default">
+            <ul class="nav navbar-nav">
+                <li><a href="{{ route('posts.index') }}">Alle posts</a></li>
+                <li class="active"><a href="{{ route('posts.show', $post->id) }}">Bekijk posts</a></li>
+                <li><a href="{{ route('posts.edit', $post->id) }}">Bewerk post</a></li>
+            </ul>
+        </nav>
+    </div>
+
     @if($post) :
 
     <div class="container">
@@ -79,7 +89,7 @@
                             {!! Form::close() !!}
                         </div>
                         <div class="col-md-12">
-                            {!! Html::linkRoute('posts.index', 'See all posts', null, array('class' => 'btn btn-default btn-block')); !!}
+                            <a href="{{ route('posts.index') }}" class="btn btn-default btn-block">See all posts</a>
                         </div>
                     </div>
                 </div>

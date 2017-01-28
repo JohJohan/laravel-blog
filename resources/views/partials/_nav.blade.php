@@ -41,12 +41,16 @@
                             <li class="{{ Request::is('posts') ? 'active' : '' }}">
                                 <a href="{{ url('/posts')}}">Posts</a>
                             </li>
+                            <li class="{{ Request::is('comments') ? 'active' : '' }}">
+                                <a  href="{{ url('/comments')}}">Comments</a>
+                            </li>
                             <li class="{{ Request::is('categories') ? 'active' : '' }}">
                                 <a  href="{{ url('/categories')}}">Categories</a>
                             </li>
                             <li class="{{ Request::is('tags') ? 'active' : '' }}">
                                 <a  href="{{ url('/tags')}}">Tags</a>
                             </li>
+
                             <li>
                                 <a href="{{ url('/logout') }}"
                                     onclick="event.preventDefault();

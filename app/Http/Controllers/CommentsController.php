@@ -15,6 +15,12 @@ class CommentsController extends Controller
         $this->middleware('auth', ['except' => 'store']);
     }
 
+    public function index()
+    {
+        $comments = Comment::orderBy('id', 'desc')->paginate(10);
+
+        return view('comments.index')->withComments($comments);
+    }
     /**
      * Store a newly created resource in storage.
      *
@@ -45,7 +51,7 @@ class CommentsController extends Controller
 
     }
 
-    
+
 
     /**
      * Show the form for editing the specified resource.

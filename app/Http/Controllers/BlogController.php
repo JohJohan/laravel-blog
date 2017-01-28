@@ -8,11 +8,12 @@ use App\Http\Requests;
 
 use App\Post;
 use App\Comment;
+use App\Tag;
 
 class BlogController extends Controller
 {
     public function getIndex(){
-        $post = Post::paginate(10);
+        $post = Post::orderBy('id', 'desc')->paginate(5);
 
         return view('blog.index')->withPosts($post);
     }

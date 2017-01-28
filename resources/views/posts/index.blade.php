@@ -4,6 +4,13 @@
 
 @section('content')
     <div class="container">
+        <nav class="navbar navbar-default">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="{{ route('posts.index') }}">Alle posts</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="container">
         <div class="row">
             <div class="col-md-10">
                 <h1>All posts</h1>
@@ -23,7 +30,8 @@
                     <th>Title</th>
                     <th>Body</th>
                     <th>Created at</th>
-                    <th></th>
+                    <th><i class="fa fa-comments-o"></i></th>
+                    <th>#</th>
                 </thead>
                 <tbody>
                     @foreach ($posts as $post)
@@ -32,6 +40,7 @@
                         <td>{{ $post->title }}</td>
                         <td>{{ substr($post->body, 0, 50) }}{{ strlen($post->body) >= 50 ? '...' : '' }}</td>
                         <td>{{ date('j M, Y', strtotime($post->created_at)) }}</td>
+                        <td>{{ $post->comments->count() }}</td>
                         <td><a href="{{ route('posts.show', $post->id) }}" class="btn btn-sm btn-default">View</a> <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-sm btn-success">Edit</a></td>
                     </tr>
                     @endforeach
@@ -39,7 +48,7 @@
             </table>
 
             <div class="text-center">
-                {{-- {!! $posts->links(); !!} --}}
+                {!! $posts->links(); !!}
             </div>
           </div>
         </div>

@@ -9,6 +9,16 @@
 @section('content')
 
     <div class="container">
+        <nav class="navbar navbar-default">
+            <ul class="nav navbar-nav">
+                <li><a href="{{ route('posts.index') }}">Alle posts</a></li>
+                <li><a href="{{ route('posts.show', $post->id) }}">Bekijk posts</a></li>
+                <li class="active"><a href="{{ route('posts.edit', $post->id) }}">Bewerk post</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="container">
         <div class="row">
             {!! Form::model($post, ['route' => ['posts.update', $post->id], 'method' => 'PUT']) !!}
             <div class="col-md-8">

@@ -24,6 +24,7 @@
             <div class="col-md-12">
                 <h3 class="comments-title"><i class="fa fa-comment-o"></i>  {{ $comments->count() }} Comments</h3>
 			@foreach($comments as $comment)
+
 				<div class="comment">
 					<div class="author-info">
 
