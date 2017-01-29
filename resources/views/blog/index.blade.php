@@ -12,7 +12,7 @@
                 @foreach ($posts as $post)
                 <h1>{{ $post->title }}</h1>
 
-                <p>{{ substr($post->body, 0, 250) }} {{ strlen($post->body) > 250 ? '...' : ''}}</p>
+                <p>{!! substr(strip_tags($post->body), 0, 250) }} {{ strlen(strip_tags($post->body)) > 250 ? '...' : ''!!}</p>
                 <p>
                     {{ date('M j, Y H:i', strtotime($post->created_at)) }}
                 </p>

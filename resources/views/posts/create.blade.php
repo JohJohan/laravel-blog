@@ -18,6 +18,15 @@
 @endsection
 
 @section('content')
+
+    <div class="container">
+        <nav class="navbar navbar-default">
+            <ul class="nav navbar-nav">
+                <li><a href="{{ route('posts.index') }}">Alle posts</a></li>
+            </ul>
+        </nav>
+    </div>
+
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">

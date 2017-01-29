@@ -7,7 +7,7 @@
         <div class="row">
             <div class="col-md-12">
                 <h1>{{ $post->title }}</h1>
-                <p>{{ $post->body }}</p>
+                {!! $post->body !!}
                 <p>
                     {{ date('M j, Y H:i', strtotime($post->created_at)) }}
                 </p>

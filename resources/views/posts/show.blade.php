@@ -21,7 +21,7 @@
 
             <div class="col-md-8">
                 <h1>{{ $post->title }}</h1>
-                {{ $post->body }}
+                {!! $post->body !!}
                 <hr>
                 <div class="tags">
                 @foreach ($post->tags as $tags)
