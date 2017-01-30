@@ -13,6 +13,7 @@ use Session;
 use DB;
 use Purifier;
 use Image;
+use Storage;
 
 class PostController extends Controller
 {
@@ -59,6 +60,7 @@ class PostController extends Controller
             'title'            => 'required|max:255',
             'slug'             => 'required|alpha_dash|min:5|max:25|unique:posts,slug',
             'category_id'      => 'required|integer',
+            'featured_image'   => 'sometimes|image',
             'body'             => 'required'
         ));
         // Store Database
@@ -137,28 +139,39 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $post = Post::find($id);
         // validate check if slug already is, else post but not the slug.
-        if($request->input('slug') == $post->slug){
-            $this->validate($request, array(
-                'title'    => 'required|max:255',
-                'category_id'  => 'required|integer',
-                'body'     => 'required'
-            ));
-        } else{
-            $this->validate($request, array(
-                'title'    => 'required|max:255',
-                'slug'     => 'required|alpha_dash|min:5|max:255|unique:posts,slug',
-                'category_id'  => 'required|integer',
-                'body'     => 'required'
-            ));
-        }
+        // dd($request);
+        $this->validate($request, array(
+            'title'            => 'required|max:255',
+            'slug'             => "required|alpha_dash|min:5|max:255|unique:posts,slug,$id",
+            'category_id'      => 'required|integer',
+            'body'             => 'required',
+            'featured_image'   => 'image',
+        ));
+
+        $post = Post::find($id);
 
         // Store
         $post->title           = $request->input('title');
         $post->slug            = $request->input('slug');
         $post->category_id     = $request->input('category_id');
         $post->body            = Purifier::clean($request->input('body'));
+
+        if ($request->hasFile('featured_image')) {
+            // Add new photo
+            $image       = $request->file('featured_image');
+            $filename    = time() . '.' . $image->getClientOriginalExtension();
+            $location    = public_path('img/' . $filename);
+
+            Image::make($image)->resize(800,400)->save($location);
+
+            $oldfilename = $post->featured_image;
+            // Update db
+            $post->featured_image = $filename;
+
+            // Delete old photo
+            Storage::delete($oldfilename);
+        }
 
         $post->save();
 
@@ -185,6 +198,13 @@ class PostController extends Controller
         $post = Post::find($id);
 
         $post->tags()->detach();
+
+        if ($post->featured_image) {
+            $oldfilename = $post->featured_image;
+
+            Storage::delete($oldfilename);
+        }
+
         $post->delete();
 
         Session::flash('success', 'The post is deletead');

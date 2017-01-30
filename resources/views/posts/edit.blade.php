@@ -30,7 +30,7 @@
 
     <div class="container">
         <div class="row">
-            {!! Form::model($post, ['route' => ['posts.update', $post->id], 'method' => 'PUT']) !!}
+            {!! Form::model($post, ['route' => ['posts.update', $post->id], 'method' => 'PUT', 'files' => true]) !!}
             <div class="col-md-8">
                 {{ Form::label('title', 'Title:')}}
                 {{ Form::text('title', null, array('class' => 'form-control', 'required' => '', 'maxlength' => '255'))}}
@@ -43,6 +43,9 @@
 
                 {{ Form::label('tags', 'Tags:') }}
                 {{ Form::select('tags', $tags, null, array('class' => 'form-control select2-multi', 'multiple' => 'multiple', 'name' => 'tags[]')) }}
+
+                {{ Form::label('featured_image', 'Upload featured image') }}
+                {{ Form::file('featured_image', null, array('class' => 'form-control'))}}
 
                 {{ Form::label('body', 'Post body:')}}
                 {{ Form::textarea('body', null,  array('class' => 'form-control', 'required' => '')) }}
