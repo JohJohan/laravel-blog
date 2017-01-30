@@ -33,7 +33,7 @@
                 <h1>Create new post</h1>
                 <hr>
 
-                {!! Form::open(['route' => 'posts.store', 'data-parsley-validate' => '']) !!}
+                {!! Form::open(['route' => 'posts.store', 'data-parsley-validate' => '', 'files' => true]) !!}
                     {{ Form::label('title', 'Title:')}}
                     {{ Form::text('title', null, array('class' => 'form-control', 'required' => '', 'maxlength' => '255'))}}
 
@@ -53,6 +53,9 @@
                             <option value="{{ $tag->id }}">{{ $tag->name }}</option>
                         @endforeach
                     </select>
+
+                    {{ Form::label('featured_image', 'Updload featured image:')}}
+                    {{ Form::file('featured_image', null, array('class' => 'form-control'))}}
 
                     {{ Form::label('body', 'Post body:')}}
                     {{ Form::textarea('body', null, array('class' => 'form-control'))}}

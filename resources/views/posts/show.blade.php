@@ -23,6 +23,9 @@
                 <h1>{{ $post->title }}</h1>
                 {!! $post->body !!}
                 <hr>
+                @if (isset($post->featured_image))
+                    <img src="{{ asset('img/' . $post->featured_image) }}" alt="" class="img-responsive"/>
+                @endif
                 <div class="tags">
                 @foreach ($post->tags as $tags)
                     <span class="label label-default">{{$tags->name}}</span>
