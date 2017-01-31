@@ -34,7 +34,7 @@
                 @else
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                            {{ Auth::user()->name }} <span class="caret"></span>
+                            <i class="fa fa-fw fa-user"></i> {{ Auth::user()->name }} <span class="caret"></span>
                         </a>
 
                         <ul class="dropdown-menu" role="menu">
@@ -50,12 +50,12 @@
                             <li class="{{ Request::is('tags') ? 'active' : '' }}">
                                 <a  href="{{ url('/tags')}}">Tags</a>
                             </li>
-
+                            <li class="divider"></li>
                             <li>
                                 <a href="{{ url('/logout') }}"
                                     onclick="event.preventDefault();
                                              document.getElementById('logout-form').submit();">
-                                    Logout
+                                    <i class="fa fa-fw fa-power-off"></i> Logout
                                 </a>
 
                                 <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
