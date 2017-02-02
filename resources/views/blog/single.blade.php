@@ -22,27 +22,30 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h3 class="comments-title"><i class="fa fa-comment-o"></i>  {{ $comments->count() }} Comments</h3>
-			@foreach($comments as $comment)
+                <h3 class="comments-title"><i class="fa fa-comment-o"></i>  {{ $post->comments()->count() }} Comments</h3>
+    			@foreach($comments as $comment)
 
-				<div class="comment">
-					<div class="author-info">
+    				<div class="comment">
+    					<div class="author-info">
 
-						<img src="{{ "https://www.gravatar.com/avatar/" . md5(strtolower(trim($comment->email))) . "?s=50&d=monsterid" }}" class="author-image">
-						<div class="author-name">
-							<h4>{{ $comment->name }}</h4>
-							<p class="author-time">{{ date('F nS, Y - g:iA' ,strtotime($comment->created_at)) }}</p>
-						</div>
+    						<img src="{{ "https://www.gravatar.com/avatar/" . md5(strtolower(trim($comment->email))) . "?s=50&d=monsterid" }}" class="author-image">
+    						<div class="author-name">
+    							<h4>{{ $comment->name }}</h4>
+    							<p class="author-time">{{ date('F nS, Y - g:iA' ,strtotime($comment->created_at)) }}</p>
+    						</div>
 
-					</div>
+    					</div>
 
-					<div class="comment-content">
-						{{ $comment->comment }}
-					</div>
+    					<div class="comment-content">
+    						{{ $comment->comment }}
+    					</div>
 
-				</div>
-			@endforeach
+    				</div>
+			    @endforeach
                 <hr>
+                <div class="text-center">
+                    {!! $comments->links(); !!}
+                </div>
             </div>
         </div>
     </div>
