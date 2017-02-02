@@ -7693,4 +7693,8 @@ button.close {
   margin-top: 15px;
 }
 
+.dropdown:hover > .dropdown-menu {
+  display: block;
+}
+
 /*# sourceMappingURL=app.css.map */

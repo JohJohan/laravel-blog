@@ -16,20 +16,26 @@
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+Route::get('/admin', 'AdminController@index');
 
 
 Route::get('blog/{slug}', ['as' => 'blog.single', 'uses' => 'BlogController@getSingle'])->where('slug', '[\w\d\-\_]+');
 Route::get('blog', ['as' => 'blog.index', 'uses' => 'BlogController@getIndex']);
 
+// Basic pages
 Route::get('/', 'PagesController@getIndex');
 Route::get('about', 'PagesController@getAbout');
 Route::get('contact', 'PagesController@getContact');
 Route::post('contact', 'PagesController@postContact');
 
+
+// Posts
 Route::resource('posts', 'PostController');
 
+// Categories
 Route::resource('categories', 'CategorieController', ['except' => ['create']]);
 
+// Tags
 Route::resource('tags', 'TagController', ['except' => ['create']]);
 
 // Comments

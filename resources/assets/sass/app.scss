@@ -13,3 +13,7 @@
 .btn-block {
     margin-top: 15px;
 }
+
+.dropdown:hover > .dropdown-menu {
+    display: block;
+}
