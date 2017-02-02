@@ -27,9 +27,6 @@
                 <li class="{{ Request::is('admin') ? 'active' : '' }}">
                     <a href="{{ url('/admin') }}">Admin</a>
                 </li>
-                <li class="">
-                    <a href="{{ url('/') }}" title="Visset your website"><i class="fa fa-fw fa-globe"></i> view your site</a>
-                </li>
                 @endif
             </ul>
 
@@ -43,11 +40,15 @@
                         <li class="{{ Request::is('register') ? 'active' : '' }}"><a href="{{ url('/register') }}">Register</a></li>
                     @else
                         <li class="dropdown">
-                            <a href="/admin" class="dropdown-toggle">
-                                <i class="fa fa-fw fa-user"></i> {{ Auth::user()->name }} <span class="caret"></span>
+                            <a href="/admin" class="dropdown-toggle avatar">
+                                <img src="/img/uploads/avatars/{{ $user->avatar }}" alt=""/> {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
 
                             <ul class="dropdown-menu" role="menu">
+                                <li class="{{ Request::is('admin/profile') ? 'active' : '' }}">
+                                    <a href="{{ url('/admin/profile')}}">Profile</a>
+                                </li>
+
                                 <li class="{{ Request::is('posts') ? 'active' : '' }}">
                                     <a href="{{ url('/posts')}}">Posts</a>
                                 </li>
@@ -82,11 +83,15 @@
                         <li class="{{ Request::is('login') ? 'active' : '' }}"><a href="{{ url('/login') }}">Login</a></li>
                     @else
                         <li class="dropdown">
-                            <a href="/admin" class="dropdown-toggle">
-                                <i class="fa fa-fw fa-user"></i> {{ Auth::user()->name }} <span class="caret"></span>
+                            <a href="/admin" class="dropdown-toggle avatar">
+                                <img src="/img/uploads/avatars/{{ $user->avatar }}" class="" alt="" /> {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
 
                             <ul class="dropdown-menu" role="menu">
+                                <li class="{{ Request::is('admin/profile') ? 'active' : '' }}">
+                                    <a href="{{ url('/admin/profile')}}">Profile</a>
+                                </li>
+
                                 <li class="{{ Request::is('posts') ? 'active' : '' }}">
                                     <a href="{{ url('/posts')}}">Posts</a>
                                 </li>

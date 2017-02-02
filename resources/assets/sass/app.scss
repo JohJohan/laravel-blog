@@ -17,3 +17,18 @@
 .dropdown:hover > .dropdown-menu {
     display: block;
 }
+
+.nav  li  a.avatar {
+    position: relative;
+    padding-left: 35px;
+    img {
+       height: 32px;
+       width: 32px;
+       position: absolute;
+       border-radius: 50px;
+       left: 0px;
+       top: 50%;
+       transform: translateY(-50%);
+       margin-right: 15px;
+   }
+}

@@ -26,7 +26,7 @@ class CreateAddImageToPost extends Migration
     public function down()
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->dropColum('featured_image');
+            $table->dropColumn('featured_image');
         });
     }
 }

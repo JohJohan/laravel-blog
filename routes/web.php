@@ -17,6 +17,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 Route::get('/admin', 'AdminController@index');
+Route::get('/admin/profile', 'UserController@profile');
+Route::post('/admin/profile', 'UserController@update');
 
 
 Route::get('blog/{slug}', ['as' => 'blog.single', 'uses' => 'BlogController@getSingle'])->where('slug', '[\w\d\-\_]+');

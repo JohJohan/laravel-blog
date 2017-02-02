@@ -7697,4 +7697,21 @@ button.close {
   display: block;
 }
 
+.nav li a.avatar {
+  position: relative;
+  padding-left: 35px;
+}
+
+.nav li a.avatar img {
+  height: 32px;
+  width: 32px;
+  position: absolute;
+  border-radius: 50px;
+  left: 0px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  margin-right: 15px;
+}
+
 /*# sourceMappingURL=app.css.map */
