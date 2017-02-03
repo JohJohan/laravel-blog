@@ -11,18 +11,6 @@
 |
 */
 
-// Staticpages
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index');
-Route::get('/admin', 'AdminController@index');
-Route::get('/admin/profile', 'UserController@profile');
-Route::post('/admin/profile', 'UserController@update');
-
-
-Route::get('blog/{slug}', ['as' => 'blog.single', 'uses' => 'BlogController@getSingle'])->where('slug', '[\w\d\-\_]+');
-Route::get('blog', ['as' => 'blog.index', 'uses' => 'BlogController@getIndex']);
 
 // Basic pages
 Route::get('/', 'PagesController@getIndex');
@@ -30,22 +18,32 @@ Route::get('about', 'PagesController@getAbout');
 Route::get('contact', 'PagesController@getContact');
 Route::post('contact', 'PagesController@postContact');
 
+// Blog routes
+Route::get('blog/{slug}', ['as' => 'blog.single', 'uses' => 'BlogController@getSingle'])->where('slug', '[\w\d\-\_]+');
+Route::get('blog', ['as' => 'blog.index', 'uses' => 'BlogController@getIndex']);
+
+// Auth routes
+Auth::routes();
+
+Route::get('/admin', 'AdminController@index');
+Route::get('/admin/profile', 'UserController@profile');
+Route::post('/admin/profile', 'UserController@update');
 
 // Posts
-Route::resource('posts', 'PostController');
+Route::resource('/admin/posts', 'PostController');
 
 // Categories
-Route::resource('categories', 'CategorieController', ['except' => ['create']]);
+Route::resource('/admin/categories', 'CategorieController', ['except' => ['create']]);
 
 // Tags
-Route::resource('tags', 'TagController', ['except' => ['create']]);
+Route::resource('/admin/tags', 'TagController', ['except' => ['create']]);
 
 // Comments
-Route::get('comments/', ['uses' => 'CommentsController@index', 'as' => 'comments.index']);
-Route::post('comments/{post_id}', ['uses' => 'CommentsController@store', 'as' => 'comments.store']);
-Route::get('comments/{id}/edit', ['uses' => 'CommentsController@edit', 'as' => 'comments.edit']);
-Route::put('comments/{id}', ['uses' => 'CommentsController@update', 'as' => 'comments.update']);
-Route::get('comments/{id}/delete', ['uses' => 'CommentsController@delete', 'as' => 'comments.delete']);
-Route::delete('comments/{id}', ['uses' => 'CommentsController@destroy', 'as' => 'comments.destroy']);
+Route::get('/admin/comments/', ['uses' => 'CommentsController@index', 'as' => 'comments.index']);
+Route::post('/admin/comments/{post_id}', ['uses' => 'CommentsController@store', 'as' => 'comments.store']);
+Route::get('/admin/comments/{id}/edit', ['uses' => 'CommentsController@edit', 'as' => 'comments.edit']);
+Route::put('/admin/comments/{id}', ['uses' => 'CommentsController@update', 'as' => 'comments.update']);
+Route::get('/admin/comments/{id}/delete', ['uses' => 'CommentsController@delete', 'as' => 'comments.delete']);
+Route::delete('/admin/comments/{id}', ['uses' => 'CommentsController@destroy', 'as' => 'comments.destroy']);
 
 // Route::resource('comments', 'CommentsController', ['except' => ['']]);

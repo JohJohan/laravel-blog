@@ -39,6 +39,18 @@
                         <li class="{{ Request::is('login') ? 'active' : '' }}"><a href="{{ url('/login') }}">Login</a></li>
                         <li class="{{ Request::is('register') ? 'active' : '' }}"><a href="{{ url('/register') }}">Register</a></li>
                     @else
+                        <li class="{{ Request::is('posts') ? 'active' : '' }}">
+                            <a href="{{ url('/admin/posts')}}">Posts</a>
+                        </li>
+                        <li class="{{ Request::is('comments') ? 'active' : '' }}">
+                            <a  href="{{ url('/admin/comments')}}">Comments</a>
+                        </li>
+                        <li class="{{ Request::is('categories') ? 'active' : '' }}">
+                            <a  href="{{ url('/admin/categories')}}">Categories</a>
+                        </li>
+                        <li class="{{ Request::is('tags') ? 'active' : '' }}">
+                            <a  href="{{ url('/admin/tags')}}">Tags</a>
+                        </li>
                         <li class="dropdown">
                             <a href="/admin" class="dropdown-toggle avatar">
                                 <img src="/img/uploads/avatars/{{ $user->avatar }}" alt=""/> {{ Auth::user()->name }} <span class="caret"></span>
@@ -49,19 +61,9 @@
                                     <a href="{{ url('/admin/profile')}}">Profile</a>
                                 </li>
 
-                                <li class="{{ Request::is('posts') ? 'active' : '' }}">
-                                    <a href="{{ url('/posts')}}">Posts</a>
-                                </li>
-                                <li class="{{ Request::is('comments') ? 'active' : '' }}">
-                                    <a  href="{{ url('/comments')}}">Comments</a>
-                                </li>
-                                <li class="{{ Request::is('categories') ? 'active' : '' }}">
-                                    <a  href="{{ url('/categories')}}">Categories</a>
-                                </li>
-                                <li class="{{ Request::is('tags') ? 'active' : '' }}">
-                                    <a  href="{{ url('/tags')}}">Tags</a>
-                                </li>
+
                                 <li class="divider"></li>
+
                                 <li>
                                     <a href="{{ url('/logout') }}"
                                         onclick="event.preventDefault();
@@ -92,19 +94,8 @@
                                     <a href="{{ url('/admin/profile')}}">Profile</a>
                                 </li>
 
-                                <li class="{{ Request::is('posts') ? 'active' : '' }}">
-                                    <a href="{{ url('/posts')}}">Posts</a>
-                                </li>
-                                <li class="{{ Request::is('comments') ? 'active' : '' }}">
-                                    <a  href="{{ url('/comments')}}">Comments</a>
-                                </li>
-                                <li class="{{ Request::is('categories') ? 'active' : '' }}">
-                                    <a  href="{{ url('/categories')}}">Categories</a>
-                                </li>
-                                <li class="{{ Request::is('tags') ? 'active' : '' }}">
-                                    <a  href="{{ url('/tags')}}">Tags</a>
-                                </li>
                                 <li class="divider"></li>
+
                                 <li>
                                     <a href="{{ url('/logout') }}"
                                         onclick="event.preventDefault();
